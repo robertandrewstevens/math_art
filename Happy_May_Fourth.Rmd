@@ -25,9 +25,12 @@ library(rafalib)
 ```{r}
 par(bg=1, fg="white")
 
-x <- 0.5 -> y
+n <- 10  # originally 50
+
+x <- 0.5
+y <- 0.5
 z <- "|-o-|"
-s <- cbind(runif(50), runif(50))
+s <- cbind(runif(10), runif(10))
 m <- c(-1, 1) / 20
 
 while(TRUE) {
