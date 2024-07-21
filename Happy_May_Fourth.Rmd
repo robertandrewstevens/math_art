@@ -1,0 +1,48 @@
+---
+title: "Happy May Fourth"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = NA, 
+  echo = TRUE, 
+  warning = TRUE, 
+  message = TRUE, 
+  fig.width = 11, 
+  fig.height = 8.5,
+  error = TRUE
+)
+```
+
+```{r}
+# import libraries
+library(rafalib)
+```
+
+```{r}
+par(bg=1, fg="white")
+
+x <- 0.5 -> y
+z <- "|-o-|"
+s <- cbind(runif(50), runif(50))
+m <- c(-1, 1) / 20
+
+while(TRUE) {
+  rafalib::nullplot(xaxt="n", yaxt="n", bty="n")
+  points(s, pch=".")
+  text(x, y, z, cex=4)
+  x <- pmin(pmax(x + sample(m, 1), 0), 1)
+  y <- pmin(pmax(y + sample(m, 1), 0), 1)
+}
+```
+
+Source: 
+
+Rafael Irizarry @rafalab
+
+https://twitter.com/home [2022-05-04]
+
+Happy `#MayFourth #rstats`
