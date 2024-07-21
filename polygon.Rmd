@@ -1,5 +1,5 @@
 ---
-title: "chord Diagram"
+title: "polygon"
 author: "Robert A. Stevens"
 date: "`r Sys.Date()`"
 output: github_document
@@ -21,23 +21,26 @@ knitr::opts_chunk$set(
 
 ```{r}
 # import libraries
-library(circlize)
+library(tidyverse)
 ```
 
 ```{r}
-par(mar=c(1, 1, 1, 1), bg="violetred4")
+df <- data.frame(x = 0, y = 0)
 
-circlize::chordDiagram(
-  matrix(1, 20, 20), 
-  col="white", 
-  symmetric=TRUE, 
-  transparency=0.85, 
-  annotationTrack = NULL
-)
+n <- 500
+
+for (i in 2:n) {
+  df[i, 1] <- df[i - 1, 1] + ((0.98)^i) * cos(i)
+  df[i, 2] <- df[i - 1, 2] + ((0.98)^i) * sin(i)
+}
+
+ggplot2::ggplot(df, aes(x, y)) +
+  geom_polygon()+
+  theme_void()
 ```
 
 Source: 
 
 Antonio S. Chinchón @aschinchon
 
-https://twitter.com/ [2017-11-22]
+https://twitter.com/ [2018-08-16]
