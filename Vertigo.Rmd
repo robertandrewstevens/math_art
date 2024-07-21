@@ -1,0 +1,44 @@
+---
+title: "Vertigo"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = NA, 
+  echo = TRUE, 
+  warning = TRUE, 
+  message = TRUE, 
+  fig.width = 11, 
+  fig.height = 8.5,
+  error = TRUE
+)
+```
+
+```{r}
+# import libraries
+library(tidyverse)
+```
+
+```{r}
+n <- 120
+
+tibble(
+  x = accumulate(1:n, ~.x + cos(.y * (pi)^10), .init=0),
+  y = accumulate(1:n, ~.x + sin(.y * (pi)^10), .init=0)
+) %>%
+  ggplot(aes(x, y)) +
+    geom_polygon() +
+    coord_equal() +
+    theme_void()
+```
+
+Source: 
+
+Antonio Sánchez Chinchón @aschinchon
+
+https://twitter.com/ [2020-08-19]
+
+`#maths #rstats #generative`
