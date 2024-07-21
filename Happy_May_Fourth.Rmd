@@ -25,15 +25,16 @@ library(rafalib)
 ```{r}
 par(bg=1, fg="white")
 
-n <- 10  # originally 50
+n <- 50  # originally 50
 
 x <- 0.5
 y <- 0.5
 z <- "|-o-|"
-s <- cbind(runif(10), runif(10))
+s <- cbind(runif(n), runif(n))
 m <- c(-1, 1) / 20
 
-while(TRUE) {
+# while(TRUE) {
+for(i in 1:10) {
   rafalib::nullplot(xaxt="n", yaxt="n", bty="n")
   points(s, pch=".")
   text(x, y, z, cex=4)
