@@ -1,0 +1,43 @@
+---
+title: "chord Diagram 2"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+Got a better name?
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = NA, 
+  echo = TRUE, 
+  warning = TRUE, 
+  message = TRUE, 
+  fig.width = 11, 
+  fig.height = 8.5,
+  error = TRUE
+)
+```
+
+```{r}
+# import libraries
+library(circlize)
+```
+
+```{r}
+par(mar=c(1, 1, 1, 1))
+
+chordDiagram(
+  matrix(1, 20, 20),
+  col="black",
+  symmetric=TRUE,
+  transparency=0.85,
+  annotationTrack=NULL
+)
+```
+
+Source: 
+
+Antonio S. Chinchón @aschinchon
+
+https://twitter.com/ [2018-08-21]
