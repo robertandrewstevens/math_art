@@ -1,5 +1,5 @@
 ---
-title: "fractal_1"
+title: "polygon 2"
 author: "Robert A. Stevens"
 date: "`r Sys.Date()`"
 output: github_document
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   echo = TRUE, 
   warning = TRUE, 
   message = TRUE, 
-  fig.width = 8.5, 
+  fig.width = 11, 
   fig.height = 8.5,
   error = TRUE
 )
@@ -25,18 +25,18 @@ library(ggplot2)
 ```
 
 ```{r}
-n <- 2500
+d <- data.frame(x = 1, y = 1)
 
-df <- data.frame(x = 0, y = 0)
+n <- 120
 
 for (i in 2:n) {
-  a <- sample(0:15, 1)
-  df[i, 1] <- df[i - 1, 1] + (cos(pi / 8 * a))
-  df[i, 2] <- df[i - 1, 2] + (sin(pi / 8 * a))
+  d[i, "x"] <- d[i - 1, 1] - sin((i %% 4) * 3 * pi / 2 - ceiling(i / 4) * pi / 40) * 0.99^i
+  d[i, "y"] <- d[i - 1, 2] + cos((i %% 4) * 3 * pi / 2 - ceiling(i / 4) * pi / 40) * 0.99^i
 }
 
-ggplot(df, aes(x, y)) +
+ggplot(d, aes(x, y)) +
   geom_polygon() +
+  coord_fixed() +
   theme_void()
 ```
 
@@ -44,4 +44,4 @@ Source:
 
 Antonio S. Chinchón @aschinchon
 
-https://twitter.com/ [2018-08-16]
+https://twitter.com/ [2018-08-17]
