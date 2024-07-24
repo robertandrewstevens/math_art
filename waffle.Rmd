@@ -1,0 +1,41 @@
+---
+title: "waffle"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+Got a better name?
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment=NA, 
+  echo=TRUE, 
+  warning=TRUE, 
+  message=TRUE, 
+  fig.width=11, 
+  fig.height=8.5,
+  error=TRUE
+)
+```
+
+```{r}
+# import libraries
+library(tidyverse)
+```
+
+```{r}
+seq(-10, 10, by=0.05) %>%
+  expand.grid(x=., y=.) %>%
+  ggplot(aes(x=(x + sin(y)), y=(y + cos(x)))) +
+    geom_point(alpha=0.1, shape=20, size=0, color="white") +
+    theme_void() +
+    coord_fixed() +
+    theme(panel.background=element_rect(fill="violetred4"))
+```
+
+Source: 
+
+Antonio S. Chinchón @aschinchon
+
+https://twitter.com/ [2018-08-21]
