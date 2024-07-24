@@ -1,5 +1,5 @@
 ---
-title: "waves"
+title: "grid"
 author: "Robert A. Stevens"
 date: "`r Sys.Date()`"
 output: github_document
@@ -23,19 +23,21 @@ knitr::opts_chunk$set(
 # import libraries
 library(dplyr)
 library(ggplot2)
+library(pracma)
 ```
 
 ```{r}
-seq(from=-10, to=10, by=0.05) %>%
+seq(-15*pi, 15*pi, by=0.1) %>%
   expand.grid(x=., y=.) %>%
-  ggplot(aes(x=(x^2+ pi * cos(y)^2), y=(y + pi * sin(x)))) +
-    geom_point(alpha=.1, shape=20, size=1, color="black") +
+  ggplot(aes(x=x, y=y, fill=erf(sec(x) - sec(y)))) +
+    geom_tile() +
+    scale_fill_gradientn(colours=c("#000000", "#FFFFFF")) +
     theme_void() +
-    coord_fixed()
+    theme(legend.position="none")
 ```
 
 Source: 
 
 Antonio S. Chinchón @aschinchon
 
-https://twitter.com/ [2018-08-19]
+https://twitter.com/ [2018-08-20]
