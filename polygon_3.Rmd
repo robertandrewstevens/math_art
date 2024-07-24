@@ -1,0 +1,47 @@
+---
+title: "polygon 3"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+Got a better name?
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = NA, 
+  echo = TRUE, 
+  warning = TRUE, 
+  message = TRUE, 
+  fig.width = 11, 
+  fig.height = 8.5,
+  error = TRUE
+)
+```
+
+```{r}
+# import libraries
+library(ggplot2)
+```
+
+```{r}
+df <- data.frame(x = 1, y = 1)
+
+n <- 180
+
+for(i in 2:n) {
+  df[i, 1] <- df[i - 1, 1] - sin((i %% 4) * 3 * pi / 2 - ceiling((i - 1) / 4) * pi / 90) * 0.977^i
+  df[i, 2] <- df[i - 1, 2] + cos((i %% 4) * 3 * pi / 2 - ceiling((i - 1) / 4) * pi / 90) * 0.977^i
+}
+
+ggplot(df, aes(x, y)) +
+  geom_polygon()+
+  coord_fixed()+
+  theme_void()
+```
+
+Source: 
+
+Antonio S. Chinchón @aschinchon
+
+https://twitter.com/ [2018-08-19]
