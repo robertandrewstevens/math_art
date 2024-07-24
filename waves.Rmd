@@ -1,0 +1,41 @@
+---
+title: "waves"
+author: "Robert A. Stevens"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+Got a better name?
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(
+  comment = NA, 
+  echo = TRUE, 
+  warning = TRUE, 
+  message = TRUE, 
+  fig.width = 11, 
+  fig.height = 8.5,
+  error = TRUE
+)
+```
+
+```{r}
+# import libraries
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+seq(from=-10, to=10, by = 0.05) %>%
+  expand.grid(x=., y=.) %>%
+  ggplot(aes(x=(x^2+ pi * cos(y)^2), y=(y + pi * sin(x)))) +
+    geom_point(alpha=.1, shape=20, size=1, color="black") +
+    theme_void() +
+    coord_fixed()
+```
+
+Source: 
+
+Antonio S. Chinchón @aschinchon
+
+https://twitter.com/ [2018-08-19]
